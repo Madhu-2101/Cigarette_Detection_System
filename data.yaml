@@ -1,0 +1,4 @@
+train: E:/cigarette/cigarette_dataset/images/train
+val: E:/cigarette/cigarette_dataset/images/val
+nc: 3  # Number of classes (since you have 1 brand)
+names: ["flake", "gold", "player"]  

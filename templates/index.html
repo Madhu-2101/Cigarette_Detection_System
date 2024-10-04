@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Detection</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script src="../static/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Detection</h1>
+        <div class="button-container">
+            <button onclick="startVideo()">Start Video</button>
+            <button onclick="stopVideo()">Stop Video</button>
+        </div>
+
+        <div id="current_counts" class="table-window">
+            <h2>Current Counts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brand ID</th>
+                        <th>Brand</th>
+                        <th>Current Count</th>
+                        <th>Last Updated On</th>
+                    </tr>
+                </thead>
+                <tbody id="counts-body">
+                    {% for log in current_counts %}
+                        <tr>
+                            <td>{{ log.brand_id }}</td>
+                            <td>{{ log.brand }}</td>
+                            <td>{{ log.current_count }}</td>
+                            <td>{{ log.last_updated_time }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="logs" class="table-window">
+            <h2>Removal Logs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brand</th>
+                        <th>Count Before Removal</th>
+                        <th>Removed Count</th>
+                        <th>Removal Time</th>
+                        <th>Remaining Count</th>
+                    </tr>
+                </thead>
+                <tbody id="logs-body">
+                    {% for log in logs %}
+                        <tr>
+                            <td>{{ log.brand }}</td>
+                            <td>{{ log.count_before_removal }}</td>
+                            <td>{{ log.removed_count }}</td>
+                            <td>{{ log.removal_time }}</td>
+                            <td>{{ log.count_after_removal }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
